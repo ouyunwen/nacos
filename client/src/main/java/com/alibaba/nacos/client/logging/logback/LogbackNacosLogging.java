@@ -19,7 +19,7 @@ import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.util.ContextInitializer;
 import com.alibaba.nacos.client.logging.AbstractNacosLogging;
 import com.alibaba.nacos.common.utils.ResourceUtils;
-import org.apache.commons.lang3.StringUtils;
+import com.alibaba.nacos.common.utils.StringUtils;
 import org.slf4j.impl.StaticLoggerBinder;
 
 /**
@@ -41,7 +41,7 @@ public class LogbackNacosLogging extends AbstractNacosLogging {
 
         try {
             LoggerContext loggerContext = (LoggerContext)StaticLoggerBinder.getSingleton().getLoggerFactory();
-            new ContextInitializer(loggerContext).configureByResource(ResourceUtils.getResourceURL(location));
+            new ContextInitializer(loggerContext).configureByResource(ResourceUtils.getResourceUrl(location));
         } catch (Exception e) {
             throw new IllegalStateException("Could not initialize Logback Nacos logging from " + location, e);
         }
